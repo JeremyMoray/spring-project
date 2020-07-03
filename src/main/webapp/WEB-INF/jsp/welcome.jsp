@@ -3,6 +3,10 @@
 <head>
 </head>
 <body>
-    <p>Welcome to our website</p>
+    <div class="main-container">
+        <h2 class="h2-subtitle">Welcome to green garden !</h2>
+        <p>You can find on this website many tools for your garden</p>
+        <p>Actual promo code : SPRING</p>
+    </div>
 </body>
 </html>

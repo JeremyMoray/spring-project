@@ -1,0 +1,4 @@
+Dark green : #49654e
+Middle green : #8ba889
+Light green : #e4e6d9
+Cream white : #ecede8

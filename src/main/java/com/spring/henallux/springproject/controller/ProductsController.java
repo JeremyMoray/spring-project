@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value="/home")
-public class WelcomeController {
+@RequestMapping(value="/products")
+public class ProductsController {
 
     @RequestMapping(method= RequestMethod.GET)
     public String home(Model model){
-        model.addAttribute("currentPage", "home");
-        model.addAttribute("title", "Home");
-        return "integrated:welcome";
+        model.addAttribute("currentPage", "products");
+        model.addAttribute("title", "Products");
+        return "integrated:products";
     }
 }
