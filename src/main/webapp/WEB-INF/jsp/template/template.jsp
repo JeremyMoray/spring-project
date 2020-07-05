@@ -21,18 +21,27 @@
         <a class="<c:if test="${currentPage == 'basket'}">active</c:if> basket-menu" href="<c:url value="/basket" />">Basket</a>
     </div>
 
-    <c:if test="${currentPage != 'login'}">
+    <c:if test="${currentPage != 'login' && currentPage != 'register'}">
         <div class="profile-container">
-
-            <sec:authorize access="!isAuthenticated()">
-                <h2 class="h2-header-subtitle">Login or register here</h2>
-                <button class="button button-login" onclick="window.location.href='<c:url value="/login" />'">Login</button>
-                <button class="button button-register" onclick="window.location.href='<c:url value="/register" />'">Register</button>
-            </sec:authorize>
-            <sec:authorize access="isAuthenticated()">
-                <h2 class="h2-header-subtitle">Welcome <sec:authentication property="principal.username" /> !</h2>
-                <button class="button button-logout" onclick="window.location.href='<c:url value="/logout" />'">Logout</button>
-            </sec:authorize>
+            <div class="row">
+                <div class="col-sm header-text">
+                    <sec:authorize access="isAuthenticated()">
+                        <h2>Welcome <sec:authentication property="principal.username" /> !</h2>
+                    </sec:authorize>
+                    <sec:authorize access="!isAuthenticated()">
+                        <h2>Login or register here</h2>
+                    </sec:authorize>
+                </div>
+                <div class="col-sm button-auth">
+                    <sec:authorize access="isAuthenticated()">
+                        <button class="button button-logout font-apple" onclick="window.location.href='<c:url value="/logout" />'">Logout</button>
+                    </sec:authorize>
+                    <sec:authorize access="!isAuthenticated()">
+                        <button class="button button-login font-apple" onclick="window.location.href='<c:url value="/login" />'">Login</button>
+                        <button class="button button-register font-apple" onclick="window.location.href='<c:url value="/register" />'">Register</button>
+                    </sec:authorize>
+                </div>
+            </div>
         </div>
     </c:if>
 

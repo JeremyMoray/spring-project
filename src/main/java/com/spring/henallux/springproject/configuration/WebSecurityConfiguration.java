@@ -15,8 +15,7 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final String LOGIN_REQUEST = "/login";
-    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/home", "/products", "/basket", "/about", "/css/**", "/images/**"};
-    private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{"/admin"};
+    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/home", "/products", "/basket", "/register", "/about", "/css/**", "/images/**"};
 
     private UserDetailsService userDetailsServiceImpl;
 
@@ -36,7 +35,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests() // We define the authorization here
-                .antMatchers(AUTHORIZED_REQUESTS_ADMIN).hasRole("ADMIN") // For the request to "/admin", the user needs to be an admin
                 .antMatchers(AUTHORIZED_REQUESTS_ANYBODY).permitAll() // For the request to the index page, any user has access
                 .anyRequest().authenticated() // For all the other requests, the user needs to be authenticated
 

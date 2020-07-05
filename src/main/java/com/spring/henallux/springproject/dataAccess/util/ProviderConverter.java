@@ -11,12 +11,27 @@ public class ProviderConverter {
 
     private Mapper mapper = new DozerBeanMapper();
     public UserEntity userModelToUserEntity(User user){
-        return mapper.map(user, UserEntity.class);
+        UserEntity userEntity = new UserEntity();
+        userEntity.setUsername(user.getUsername());
+        userEntity.setPassword(user.getPassword());
+        userEntity.setAuthorities(user.getStringAuthorities());
+        userEntity.setAccountNonExpired(user.getAccountNonExpired());
+        userEntity.setAccountNonLocked(user.getAccountNonLocked());
+        userEntity.setCredentialsNonExpired(user.getCredentialsNonExpired());
+        userEntity.setEnabled(user.getEnabled());
+        userEntity.setFirstname(user.getFirstname());
+        userEntity.setName(user.getName());
+        userEntity.setEmail(user.getEmail());
+        userEntity.setPhoneNumber(user.getPhoneNumber());
+        userEntity.setBirthdate(user.getBirthdate());
+        userEntity.setPostalCode(user.getPostalCode());
+        userEntity.setCity(user.getCity());
+        userEntity.setDeliveryAddress(user.getDeliveryAddress());
+        return userEntity;
     }
 
     public User userEntityToUserModel(UserEntity userEntity){
         //return mapper.map(userEntity, User.class);
-        //Mapper ne fonctionne pas
 
         User user = new User();
         user.setUsername(userEntity.getUsername());
@@ -26,6 +41,14 @@ public class ProviderConverter {
         user.setAccountNonLocked(userEntity.getAccountNonLocked());
         user.setCredentialsNonExpired(userEntity.getCredentialsNonExpired());
         user.setEnabled(userEntity.getEnabled());
+        user.setFirstname(userEntity.getFirstname());
+        user.setName(userEntity.getName());
+        user.setEmail(userEntity.getEmail());
+        user.setPhoneNumber(userEntity.getPhoneNumber());
+        user.setBirthdate(userEntity.getBirthdate());
+        user.setPostalCode(userEntity.getPostalCode());
+        user.setCity(userEntity.getCity());
+        user.setDeliveryAddress(userEntity.getDeliveryAddress());
         return user;
     }
 }

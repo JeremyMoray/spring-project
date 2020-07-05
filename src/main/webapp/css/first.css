@@ -60,8 +60,8 @@ h1{
 
 .button{
     border-radius: 5px;
-    border: none;
-    color: white;
+    border: 2px solid;
+    color: #ecede8;
     padding: 10px 25px;
     text-align: center;
     text-decoration: none;
@@ -69,16 +69,43 @@ h1{
     font-size: 16px;
 }
 
+.button-auth{
+    text-align: right;
+}
+
 .button-login{
-    background-color: #333;
+    border-color: #8ba889;
+    background-color: #ecede8;
+    color: #8ba889;
+}
+
+.button-login:hover{
+    background-color: #8ba889;
+    color: #ecede8;
+    transition: 0.3s;
 }
 
 .button-register{
-    background-color: #333;
+    border-color: #8ba889;
+    background-color: #8ba889;
+}
+
+.button-register:hover{
+    border-color: #49654e;
+    background-color: #49654e;
+    transition: 0.3s;
 }
 
 .button-logout{
-    background-color: #333;
+    border-color: #8ba889;
+    background-color: #ecede8;
+    color: #8ba889;
+}
+
+.button-logout:hover{
+    background-color: #8ba889;
+    color: #ecede8;
+    transition: 0.3s;
 }
 
 .profile-container{
@@ -92,6 +119,64 @@ h1{
     margin-bottom: 30px;
 }
 
-header{
-    background-image: url("/images/zen.jpg");
+.login-form{
+    text-align: center;
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+    padding: 50px 20px 50px 20px;
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: #8ba889;
+    background-color: #8ba889;
+    color: white;
+}
+
+.login-container{
+    text-align: center;
+}
+
+.button-form-login{
+    margin-top: 25px;
+    border-radius: 5px;
+    border: 2px solid;
+    color: #ecede8;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-color: #ecede8;
+    background-color: #8ba889;
+}
+
+.button-form-login:hover{
+    background-color: #49654e;
+    border-color: #49654e;
+    transition: 0.3s;
+}
+
+.button-form-register{
+    color: #8ba889;
+    border-color: #ecede8;
+    background-color: #ecede8;
+    margin-left: 10%;
+}
+
+.button-form-register:hover{
+    color: #ecede8;
+    border-color: #49654e;
+    transition: 0.3s;
+}
+
+.font-apple{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-weight: 500;
+}
+
+.register-form{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 50px 20px 50px 20px;
 }
