@@ -6,9 +6,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.Column;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -16,8 +15,10 @@ import java.util.List;
 
 public class User implements UserDetails {
 
+    @NotEmpty
     private String username;
 
+    @NotEmpty
     private String password;
 
     private String authorities;
@@ -115,8 +116,7 @@ public class User implements UserDetails {
     }
 
     public void setPassword(String password) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        this.password = encoder.encode(password);
+        this.password = password;
     }
 
     public void setAuthorities(String authorities) {

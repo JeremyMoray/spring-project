@@ -5,6 +5,7 @@ import com.spring.henallux.springproject.dataAccess.dao.UserDataAccess;
 import com.spring.henallux.springproject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,17 +36,24 @@ public class RegisterController {
     }
 
     @RequestMapping(method=RequestMethod.POST)
-    public String getFormData(@Valid @ModelAttribute(value="userForm") User user, final BindingResult errors){
+    public String getFormData(Model model, @Valid @ModelAttribute(value="userForm") User user, final BindingResult errors){
 
         user.setAccountNonExpired(true);
         user.setAccountNonLocked(true);
         user.setCredentialsNonExpired(true);
         user.setEnabled(true);
 
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(user.getPassword()));;
+
         if(!errors.hasErrors()){
             userDataAccess.save(user);
             return "redirect:/home";
         }
+
+        user.setPassword(null);
+        model.addAttribute("currentPage", "register");
+        model.addAttribute("title", "Register");
         return "integrated:register";
     }
 }
