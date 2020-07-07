@@ -15,30 +15,48 @@
     </header>
 
     <div class="topnav">
-        <a class="<c:if test="${currentPage == 'home'}">active</c:if> first-menu" href="<c:url value="/home" />">Home</a>
-        <a class="<c:if test="${currentPage == 'products'}">active</c:if>" href="<c:url value="/products" />">Products</a>
-        <a class="<c:if test="${currentPage == 'about'}">active</c:if>" href="<c:url value="/about" />">About</a>
-        <a class="<c:if test="${currentPage == 'basket'}">active</c:if> basket-menu" href="<c:url value="/basket" />">Basket</a>
+        <a class="<c:if test="${currentPage == 'home'}">active</c:if> first-menu" href="<c:url value="/home" />">
+            <spring:message code="home" />
+        </a>
+        <a class="<c:if test="${currentPage == 'products'}">active</c:if>" href="<c:url value="/products" />">
+            <spring:message code="products" />
+        </a>
+        <a class="<c:if test="${currentPage == 'about'}">active</c:if>" href="<c:url value="/about" />">
+            <spring:message code="about" />
+        </a>
+        <a class="<c:if test="${currentPage == 'basket'}">active</c:if> basket-menu" href="<c:url value="/basket" />">
+            <spring:message code="basket" />
+        </a>
     </div>
+
+    <spring:url var="localeFr" value="">
+        <spring:param name="locale" value="fr" />
+    </spring:url>
+    <spring:url var="localeEn" value="">
+        <spring:param name="locale" value="en" />
+    </spring:url>
+
+    <a href="${localeFr}"><img src="<spring:url value="/images/flagFr.png"/>" alt="fr" width="50" height="50"/></a>
+    <a href="${localeEn}"><img src="<spring:url value="/images/flagEn.png"/>" alt="en" width="50" height="50"/></a>
 
     <c:if test="${currentPage != 'login' && currentPage != 'register'}">
         <div class="profile-container">
             <div class="row">
                 <div class="col-sm header-text">
                     <sec:authorize access="isAuthenticated()">
-                        <h2>Welcome <sec:authentication property="principal.username" /> !</h2>
+                        <h2><spring:message code="welcome" /> <sec:authentication property="principal.username" /> !</h2>
                     </sec:authorize>
                     <sec:authorize access="!isAuthenticated()">
-                        <h2>Login or register here</h2>
+                        <h2><spring:message code="loginOrRegisterHere" /></h2>
                     </sec:authorize>
                 </div>
                 <div class="col-sm button-auth">
                     <sec:authorize access="isAuthenticated()">
-                        <button class="button button-logout font-apple" onclick="window.location.href='<c:url value="/logout" />'">Logout</button>
+                        <button class="button button-logout font-apple" onclick="window.location.href='<c:url value="/logout" />'"><spring:message code="logout" /></button>
                     </sec:authorize>
                     <sec:authorize access="!isAuthenticated()">
-                        <button class="button button-login font-apple" onclick="window.location.href='<c:url value="/login" />'">Login</button>
-                        <button class="button button-register font-apple" onclick="window.location.href='<c:url value="/register" />'">Register</button>
+                        <button class="button button-login font-apple" onclick="window.location.href='<c:url value="/login" />'"><spring:message code="login" /></button>
+                        <button class="button button-register font-apple" onclick="window.location.href='<c:url value="/register" />'"><spring:message code="register" /></button>
                     </sec:authorize>
                 </div>
             </div>
