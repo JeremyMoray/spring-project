@@ -26,12 +26,15 @@ h1{
 }
 
 .topnav a {
+    background-color: #333;
+    border: none;
     float: left;
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+    outline: none;
 }
 
 .topnav a:hover {
@@ -179,4 +182,8 @@ h1{
     margin-left: 20%;
     margin-right: 20%;
     padding: 50px 20px 50px 20px;
+}
+
+.text-error{
+    color: red;
 }

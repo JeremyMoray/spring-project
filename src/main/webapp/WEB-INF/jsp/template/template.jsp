@@ -16,8 +16,8 @@
 
     <div class="topnav">
         <a class="<c:if test="${currentPage == 'home'}">active</c:if> first-menu" href="<c:url value="/home" />">Home</a>
-        <a <c:if test="${currentPage == 'products'}">class="active"</c:if> href="<c:url value="/products" />">Products</a>
-        <a <c:if test="${currentPage == 'about'}">class="active"</c:if> href="<c:url value="/about" />">About</a>
+        <a class="<c:if test="${currentPage == 'products'}">active</c:if>" href="<c:url value="/products" />">Products</a>
+        <a class="<c:if test="${currentPage == 'about'}">active</c:if>" href="<c:url value="/about" />">About</a>
         <a class="<c:if test="${currentPage == 'basket'}">active</c:if> basket-menu" href="<c:url value="/basket" />">Basket</a>
     </div>
 
