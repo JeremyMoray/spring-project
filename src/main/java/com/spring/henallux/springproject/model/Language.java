@@ -4,9 +4,13 @@ import com.spring.henallux.springproject.dataAccess.entity.TranslationCategoryEn
 
 import java.util.List;
 
-public class Category {
+public class Language {
 
     private Integer id;
+
+    private String name;
+
+    private String locale;
 
     private List<TranslationCategoryEntity> translationCategories;
 
@@ -16,6 +20,22 @@ public class Category {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLocale() {
+        return locale;
+    }
+
+    public void setLocale(String locale) {
+        this.locale = locale;
     }
 
     public List<TranslationCategoryEntity> getTranslationCategories() {
