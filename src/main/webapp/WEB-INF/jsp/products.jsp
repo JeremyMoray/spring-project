@@ -12,8 +12,10 @@
                 <div class="row">
             </c:if>
 
-                <div class="col-sm-4">
-                    <c:out value="${ translationCategory.name }" />
+                <div class="col-md-4">
+                    <button class="button-category font-apple" onclick="window.location.href='#'">
+                        <c:out value="${ translationCategory.name }" />
+                    </button>
                 </div>
 
             <c:if test="${status.count%3 == 0}">

@@ -192,3 +192,21 @@ h1{
     margin: 30px 200px 30px 200px;
     float: right;
 }
+
+.button-category{
+    border: 2px solid;
+    background-color: darkslategray;
+    color: #ecede8;
+    padding: 10px 25px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 18px;
+    outline: none !important;
+    width: 100%;
+}
+
+.button-category:hover{
+    background-color: slategray;
+    transition: 0.2s;
+}

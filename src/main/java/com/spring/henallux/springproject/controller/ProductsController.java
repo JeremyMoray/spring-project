@@ -2,7 +2,6 @@ package com.spring.henallux.springproject.controller;
 
 import com.spring.henallux.springproject.dataAccess.dao.CategoryDAO;
 import com.spring.henallux.springproject.dataAccess.dao.CategoryDataAccess;
-import com.spring.henallux.springproject.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
