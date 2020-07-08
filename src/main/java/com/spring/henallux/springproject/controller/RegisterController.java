@@ -4,6 +4,8 @@ import com.spring.henallux.springproject.dataAccess.dao.UserDAO;
 import com.spring.henallux.springproject.dataAccess.dao.UserDataAccess;
 import com.spring.henallux.springproject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -20,10 +22,12 @@ import javax.validation.Valid;
 public class RegisterController {
 
     private UserDataAccess userDataAccess;
+    private final MessageSource messageSource;
 
     @Autowired
-    public RegisterController(UserDAO userDataAccess){
+    public RegisterController(UserDAO userDataAccess, MessageSource messageSource){
         this.userDataAccess = userDataAccess;
+        this.messageSource = messageSource;
     }
 
     @RequestMapping(method= RequestMethod.GET)
@@ -31,7 +35,7 @@ public class RegisterController {
         UserDetails user = new User();
         model.addAttribute("userForm", user);
         model.addAttribute("currentPage", "register");
-        model.addAttribute("title", "Register");
+        model.addAttribute("title", messageSource.getMessage("register", null, LocaleContextHolder.getLocale()));
         return "integrated:register";
     }
 

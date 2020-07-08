@@ -1,12 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="include/importTags.jsp"%>
 <html>
 <head>
 </head>
 <body>
     <div class="main-container">
-        <h2 class="h2-subtitle">Welcome to green garden !</h2>
-        <p>You can find on this website many tools for your garden</p>
-        <p>Actual promo code : SPRING</p>
+        <h2 class="h2-subtitle"><spring:message code="welcomeGreenGarden" /></h2>
+        <spring:message code="welcomePageText" />
     </div>
 </body>
 </html>
