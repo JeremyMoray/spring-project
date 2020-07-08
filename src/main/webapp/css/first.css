@@ -111,13 +111,6 @@ h1{
     transition: 0.3s;
 }
 
-.profile-container{
-    margin: 100px 200px 70px 200px;
-    padding: 40px 100px 40px 100px;
-    border-radius: 2px;
-    background-color: #ecede8;
-}
-
 .h2-header-subtitle{
     margin-bottom: 30px;
 }
@@ -186,4 +179,16 @@ h1{
 
 .text-error{
     color: red;
+}
+
+.profile-container{
+    margin: 120px 200px 30px 200px;
+    padding: 40px 100px 40px 100px;
+    border-radius: 2px;
+    background-color: #ecede8;
+}
+
+.locale-container{
+    margin: 30px 200px 30px 200px;
+    float: right;
 }

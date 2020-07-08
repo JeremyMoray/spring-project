@@ -1,11 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../include/importTags.jsp"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <html>
 <head>
-    <title>${title}</title>
+    <meta http-equiv="Content-Type" content="type=test/html; charset=utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link type="text/css" href="<spring:url value='/css/first.css' />" rel="stylesheet">
+    <title>${title}</title>
 </head>
 <body>
     <header>
@@ -29,15 +30,17 @@
         </a>
     </div>
 
-    <spring:url var="localeFr" value="">
-        <spring:param name="locale" value="fr" />
-    </spring:url>
-    <spring:url var="localeEn" value="">
-        <spring:param name="locale" value="en" />
-    </spring:url>
+    <div class="locale-container">
+        <spring:url var="localeFr" value="">
+            <spring:param name="locale" value="fr" />
+        </spring:url>
+        <spring:url var="localeEn" value="">
+            <spring:param name="locale" value="en" />
+        </spring:url>
 
-    <a href="${localeFr}"><img src="<spring:url value="/images/flagFr.png"/>" alt="fr" width="50" height="50"/></a>
-    <a href="${localeEn}"><img src="<spring:url value="/images/flagEn.png"/>" alt="en" width="50" height="50"/></a>
+        <a href="${localeFr}"><img src="<spring:url value="/images/flagFr.png"/>" alt="fr" width="50" height="50"/></a>
+        <a href="${localeEn}"><img src="<spring:url value="/images/flagEn.png"/>" alt="en" width="50" height="50"/></a>
+    </div>
 
     <c:if test="${currentPage != 'login' && currentPage != 'register'}">
         <div class="profile-container">
