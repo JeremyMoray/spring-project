@@ -19,4 +19,13 @@ public interface ProductRepository  extends JpaRepository<TranslationProductEnti
             "and category.keyname = ?2 "
     )
     public List<TranslationProductEntity> findAllByLocaleByCategory(String locale, String category);
+
+    @Query("select translationProduct " +
+            "from ProductEntity product, TranslationProductEntity translationProduct, LanguageEntity language " +
+            "where product = translationProduct.product " +
+            "and translationProduct.language = language " +
+            "and language.locale = ?1 " +
+            "and product.keyname = ?2 "
+    )
+    public TranslationProductEntity findProductByLocale(String locale, String product);
 }

@@ -8,6 +8,8 @@ public class Product {
 
     private Double unitPrice;
 
+    private String imageURL;
+
     private Category category;
 
     public Integer getId() {
@@ -32,6 +34,14 @@ public class Product {
 
     public void setUnitPrice(Double unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public Category getCategory() {

@@ -20,8 +20,9 @@
             </c:if>
 
             <div class="col-md-4">
-                <button class="button-category font-apple">
-                    <c:out value="${ translationProduct.name }" />
+                <img class="img-product" src='<c:url value="${ translationProduct.product.imageURL }" />' onclick="window.location.href='<c:url value="/catalog/${ translationProduct.product.category.keyname }/${ translationProduct.product.keyname }" />'"/>
+                <button class="button-product font-apple" onclick="window.location.href='<c:url value="/catalog/${ translationProduct.product.category.keyname }/${ translationProduct.product.keyname }" />'">
+                    <c:out value="${ translationProduct.name } - ${ translationProduct.product.unitPrice } €" />
                 </button>
             </div>
 

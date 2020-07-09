@@ -20,6 +20,9 @@ public class ProductEntity {
     @Column(name="unit_price")
     private Double unitPrice;
 
+    @Column(name="image_url")
+    private String imageURL;
+
     @JoinColumn(name="category_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)
     private CategoryEntity category;
@@ -46,6 +49,14 @@ public class ProductEntity {
 
     public void setUnitPrice(Double unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public CategoryEntity getCategory() {

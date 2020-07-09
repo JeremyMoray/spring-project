@@ -35,4 +35,9 @@ public class ProductDAO  implements ProductDataAccess {
         }
         return translationProducts;
     }
+
+    public TranslationProduct findProductByLocale(String locale, String product){
+        TranslationProductEntity translationProductEntity = productRepository.findProductByLocale(locale, product);
+        return providerConverter.productEntityToProductModel(translationProductEntity);
+    }
 }
