@@ -1,12 +1,11 @@
 package com.spring.henallux.springproject.dataAccess.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name="language")
-public class LanguageEntity {
+public class LanguageEntity{
 
     public LanguageEntity(){
 
@@ -24,6 +23,9 @@ public class LanguageEntity {
 
     @OneToMany(mappedBy = "language")
     private List<TranslationCategoryEntity> translationCategories;
+
+    @OneToMany(mappedBy = "language")
+    private List<TranslationProductEntity> translationProducts;
 
     public Integer getId() {
         return id;
@@ -55,5 +57,13 @@ public class LanguageEntity {
 
     public void setTranslationCategories(List<TranslationCategoryEntity> translationCategories) {
         this.translationCategories = translationCategories;
+    }
+
+    public List<TranslationProductEntity> getTranslationProducts() {
+        return translationProducts;
+    }
+
+    public void setTranslationProducts(List<TranslationProductEntity> translationProducts) {
+        this.translationProducts = translationProducts;
     }
 }

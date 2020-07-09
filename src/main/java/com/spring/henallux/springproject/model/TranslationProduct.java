@@ -2,11 +2,11 @@ package com.spring.henallux.springproject.model;
 
 import java.io.Serializable;
 
-public class TranslationCategory implements Serializable {
+public class TranslationProduct implements Serializable {
 
     private String name;
 
-    private Category category;
+    private Product product;
 
     private Language language;
 
@@ -18,12 +18,12 @@ public class TranslationCategory implements Serializable {
         this.name = name;
     }
 
-    public Category getCategory() {
-        return category;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Language getLanguage() {

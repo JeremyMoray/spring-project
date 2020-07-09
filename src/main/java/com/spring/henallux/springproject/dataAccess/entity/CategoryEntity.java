@@ -1,12 +1,11 @@
 package com.spring.henallux.springproject.dataAccess.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name="category")
-public class CategoryEntity {
+public class CategoryEntity{
 
     public CategoryEntity(){
 
@@ -21,6 +20,9 @@ public class CategoryEntity {
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<TranslationCategoryEntity> translationCategories;
+
+    @OneToMany(mappedBy = "category")
+    private List<ProductEntity> products;
 
     public Integer getId() {
         return id;
@@ -44,5 +46,13 @@ public class CategoryEntity {
 
     public void setTranslationCategories(List<TranslationCategoryEntity> translationCategories) {
         this.translationCategories = translationCategories;
+    }
+
+    public List<ProductEntity> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<ProductEntity> products) {
+        this.products = products;
     }
 }

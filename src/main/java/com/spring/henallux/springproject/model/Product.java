@@ -1,14 +1,14 @@
 package com.spring.henallux.springproject.model;
 
-import java.util.List;
-
-public class Category{
+public class Product {
 
     private Integer id;
 
     private String keyname;
 
-    private List<TranslationCategory> translationCategories;
+    private Double unitPrice;
+
+    private Category category;
 
     public Integer getId() {
         return id;
@@ -26,11 +26,19 @@ public class Category{
         this.keyname = keyname;
     }
 
-    public List<TranslationCategory> getTranslationCategories() {
-        return translationCategories;
+    public Double getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setTranslationCategories(List<TranslationCategory> translationCategories) {
-        this.translationCategories = translationCategories;
+    public void setUnitPrice(Double unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

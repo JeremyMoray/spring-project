@@ -1,26 +1,20 @@
 package com.spring.henallux.springproject.dataAccess.entity;
 
-import com.spring.henallux.springproject.model.TranslationCategory;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="translation_category")
-@IdClass(TranslationCategoryEntity.class)
-public class TranslationCategoryEntity implements Serializable {
-
-    public TranslationCategoryEntity(){
-
-    }
+@Table(name="translation_product")
+@IdClass(TranslationProductEntity.class)
+public class TranslationProductEntity implements Serializable {
 
     @Column(name="name")
     private String name;
 
     @Id
-    @JoinColumn(name="category_id", referencedColumnName = "id")
+    @JoinColumn(name="product_id", referencedColumnName = "id")
     @ManyToOne
-    private CategoryEntity category;
+    private ProductEntity product;
 
     @Id
     @JoinColumn(name="language_id", referencedColumnName = "id")
@@ -35,12 +29,12 @@ public class TranslationCategoryEntity implements Serializable {
         this.name = name;
     }
 
-    public CategoryEntity getCategory() {
-        return category;
+    public ProductEntity getProduct() {
+        return product;
     }
 
-    public void setCategory(CategoryEntity category) {
-        this.category = category;
+    public void setProduct(ProductEntity product) {
+        this.product = product;
     }
 
     public LanguageEntity getLanguage() {

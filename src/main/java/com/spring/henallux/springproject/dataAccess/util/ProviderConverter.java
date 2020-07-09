@@ -1,10 +1,10 @@
 package com.spring.henallux.springproject.dataAccess.util;
 
-import com.spring.henallux.springproject.dataAccess.entity.CategoryEntity;
 import com.spring.henallux.springproject.dataAccess.entity.TranslationCategoryEntity;
+import com.spring.henallux.springproject.dataAccess.entity.TranslationProductEntity;
 import com.spring.henallux.springproject.dataAccess.entity.UserEntity;
-import com.spring.henallux.springproject.model.Category;
 import com.spring.henallux.springproject.model.TranslationCategory;
+import com.spring.henallux.springproject.model.TranslationProduct;
 import com.spring.henallux.springproject.model.User;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
@@ -58,5 +58,9 @@ public class ProviderConverter {
 
     public TranslationCategory categoryEntityToCategoryModel(TranslationCategoryEntity categoryEntity){
         return mapper.map(categoryEntity, TranslationCategory.class);
+    }
+
+    public TranslationProduct productEntityToProductModel(TranslationProductEntity productEntity){
+        return mapper.map(productEntity, TranslationProduct.class);
     }
 }

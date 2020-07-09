@@ -1,10 +1,10 @@
 package com.spring.henallux.springproject.model;
 
-import com.spring.henallux.springproject.dataAccess.entity.TranslationCategoryEntity;
+import com.spring.henallux.springproject.dataAccess.entity.TranslationProductEntity;
 
 import java.util.List;
 
-public class Language {
+public class Language{
 
     private Integer id;
 
@@ -12,7 +12,9 @@ public class Language {
 
     private String locale;
 
-    private List<TranslationCategoryEntity> translationCategories;
+    private List<TranslationCategory> translationCategories;
+
+    private List<TranslationProduct> translationProducts;
 
     public Integer getId() {
         return id;
@@ -38,11 +40,19 @@ public class Language {
         this.locale = locale;
     }
 
-    public List<TranslationCategoryEntity> getTranslationCategories() {
+    public List<TranslationCategory> getTranslationCategories() {
         return translationCategories;
     }
 
-    public void setTranslationCategories(List<TranslationCategoryEntity> translationCategories) {
+    public void setTranslationCategories(List<TranslationCategory> translationCategories) {
         this.translationCategories = translationCategories;
+    }
+
+    public List<TranslationProduct> getTranslationProducts() {
+        return translationProducts;
+    }
+
+    public void setTranslationProducts(List<TranslationProduct> translationProducts) {
+        this.translationProducts = translationProducts;
     }
 }
