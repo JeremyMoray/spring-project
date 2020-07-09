@@ -5,7 +5,7 @@
 </head>
 <body>
     <div class="main-container">
-        <h2 class="h2-subtitle"><spring:message code="products" /></h2>
+        <h2 class="h2-subtitle"><spring:message code="catalog" /></h2>
         <c:forEach items="${ translationCategories }" var="translationCategory" varStatus="status">
 
             <c:if test="${status.count%3 == 1}">
@@ -13,7 +13,7 @@
             </c:if>
 
                 <div class="col-md-4">
-                    <button class="button-category font-apple" onclick="window.location.href='#'">
+                    <button class="button-category font-apple" onclick="window.location.href='<c:url value="/catalog/${ translationCategory.category.keyname }" />'">
                         <c:out value="${ translationCategory.name }" />
                     </button>
                 </div>

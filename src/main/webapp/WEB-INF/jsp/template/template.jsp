@@ -19,8 +19,8 @@
         <a class="<c:if test="${currentPage == 'home'}">active</c:if> first-menu" href="<c:url value="/home" />">
             <spring:message code="home" />
         </a>
-        <a class="<c:if test="${currentPage == 'products'}">active</c:if>" href="<c:url value="/products" />">
-            <spring:message code="products" />
+        <a class="<c:if test="${currentPage == 'catalog'}">active</c:if>" href="<c:url value="/catalog" />">
+            <spring:message code="catalog" />
         </a>
         <a class="<c:if test="${currentPage == 'about'}">active</c:if>" href="<c:url value="/about" />">
             <spring:message code="about" />

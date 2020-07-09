@@ -8,6 +8,8 @@ public class Category {
 
     private Integer id;
 
+    private String keyname;
+
     private List<TranslationCategoryEntity> translationCategories;
 
     public Integer getId() {
@@ -16,6 +18,14 @@ public class Category {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getKeyname() {
+        return keyname;
+    }
+
+    public void setKeyname(String keyname) {
+        this.keyname = keyname;
     }
 
     public List<TranslationCategoryEntity> getTranslationCategories() {

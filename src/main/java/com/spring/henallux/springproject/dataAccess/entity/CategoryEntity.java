@@ -16,6 +16,9 @@ public class CategoryEntity {
     @Column(name="id")
     private Integer id;
 
+    @Column(name="keyname")
+    private String keyname;
+
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<TranslationCategoryEntity> translationCategories;
 
@@ -25,6 +28,14 @@ public class CategoryEntity {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getKeyname() {
+        return keyname;
+    }
+
+    public void setKeyname(String keyname) {
+        this.keyname = keyname;
     }
 
     public List<TranslationCategoryEntity> getTranslationCategories() {

@@ -7,27 +7,36 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value="/products")
-public class ProductsController {
+@RequestMapping(value="/catalog")
+public class CatalogController {
 
     private CategoryDataAccess categoryDataAccess;
     private final MessageSource messageSource;
 
     @Autowired
-    public ProductsController(CategoryDAO categoryDataAccess, MessageSource messageSource){
+    public CatalogController(CategoryDAO categoryDataAccess, MessageSource messageSource){
         this.messageSource = messageSource;
         this.categoryDataAccess = categoryDataAccess;
     }
 
-    @RequestMapping(method= RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String home(Model model){
-        model.addAttribute("currentPage", "products");
-        model.addAttribute("title", messageSource.getMessage("products", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("currentPage", "catalog");
+        model.addAttribute("title", messageSource.getMessage("catalog", null, LocaleContextHolder.getLocale()));
         model.addAttribute("translationCategories", categoryDataAccess.findAllByLocale(LocaleContextHolder.getLocale().toString()));
-        return "integrated:products";
+        return "integrated:catalog";
+    }
+
+    @RequestMapping(value = "/{category}", method = RequestMethod.GET)
+    public String home(Model model, @PathVariable("category") String category){
+        model.addAttribute("currentPage", "catalog");
+        model.addAttribute("title", messageSource.getMessage("catalog", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("translationCategories", categoryDataAccess.findAllByLocale(LocaleContextHolder.getLocale().toString()));
+        return "integrated:catalog";
     }
 }
