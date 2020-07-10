@@ -2,6 +2,14 @@
 <%@ include file="include/importTags.jsp"%>
 <html>
 <head>
+    <script>
+        function changeURL(category, product){
+
+            console.log(category);
+            let url = "/catalog/" + category + "/" + product + "/add/" + document.getElementById("quantity-input").value;
+            window.location.href = url;
+        }
+    </script>
 </head>
 <body>
     <div class="main-container">
@@ -15,7 +23,7 @@
                 <img class="img-details" src='<c:url value="${ translationProduct.product.imageURL }" />' />
             </div>
             <div class="col-5">
-                <h2 class="h2-subtitle">${ translationProduct.name }</h2>
+                <h2 class="h2-subtitle">${ translationProduct.name } - ${ translationProduct.product.unitPrice }€</h2>
                 <p>${ translationProduct.description }</p>
             </div>
             <div class="col-2">
@@ -23,9 +31,9 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1"><spring:message code="quantity" /> : </span>
                     </div>
-                    <input type="number" class="form-control" aria-label="Quantity" min="1" placeholder="1">
+                    <input id="quantity-input" type="number" class="form-control" aria-label="Quantity" min="1" value="1">
                 </div>
-                <button type="button" class="button-add-basket font-apple" onclick="window.location.href='<c:url value="#" />'"><spring:message code="addToBasket" /></button>
+                <button id="button-add-basket" type="button" class="button-add-basket font-apple" onclick="changeURL('${ translationProduct.product.category.keyname }', '${ translationProduct.product.keyname }');"><spring:message code="addToBasket" /></button>
             </div>
         </div>
     </div>
