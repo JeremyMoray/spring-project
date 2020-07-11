@@ -23,7 +23,7 @@
                 <img class="img-details" src='<c:url value="${ translationProduct.product.imageURL }" />' />
             </div>
             <div class="col-5">
-                <h2 class="h2-subtitle">${ translationProduct.name } - ${ translationProduct.product.unitPrice }€</h2>
+                <h2 class="h2-subtitle">${ translationProduct.name } - ${ translationProduct.product.unitPrice } €</h2>
                 <p>${ translationProduct.description }</p>
             </div>
             <div class="col-2">

@@ -9,11 +9,8 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 @Controller
@@ -31,8 +28,7 @@ public class BasketController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String home(Model model, HttpSession session ){
-        HashMap<String, Integer> basket = (HashMap<String, Integer>) session.getAttribute(Constant.BASKET);
+    public String home(Model model, @ModelAttribute(value=Constant.BASKET) HashMap<String, Integer> basket){
         model.addAttribute(basket);
         model.addAttribute("currentPage", "basket");
         model.addAttribute("title", messageSource.getMessage("basket", null, LocaleContextHolder.getLocale()));
@@ -46,5 +42,19 @@ public class BasketController {
         model.addAttribute("translationProducts", translationProducts);
 
         return "integrated:basket";
+    }
+
+    @RequestMapping(value="/update", method = RequestMethod.GET)
+    public String updateProduct(@ModelAttribute(value=Constant.BASKET) HashMap<String, Integer> basket, @RequestParam String keyname, @RequestParam Integer quantity){
+        basket.put(keyname, quantity);
+
+        return "redirect:/basket";
+    }
+
+    @RequestMapping(value="/delete", method = RequestMethod.GET)
+    public String deleteProduct(@ModelAttribute(value=Constant.BASKET) HashMap<String, Integer> basket, @RequestParam String keyname){
+        basket.remove(keyname);
+
+        return "redirect:/basket";
     }
 }
