@@ -294,6 +294,7 @@ h1{
 .link-update-basket{
     visibility: hidden;
     font-size: 16px;
+    color: red;
 }
 
 .link-delete-basket{

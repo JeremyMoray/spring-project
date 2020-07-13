@@ -7,6 +7,7 @@
             let infoColumns = document.getElementsByClassName("product-infos-basket");
             for(infoColumn of infoColumns){
                 infoColumn.addEventListener('input', function (evt) {
+                    showUpdateButton(evt);
                     updateTotalPrice();
                 });
             }
@@ -20,6 +21,18 @@
                 totalPrice += parseFloat(infoColumn.getElementsByClassName("price-value")[0].innerHTML) * parseFloat(infoColumn.getElementsByClassName("quantity-value")[0].value);
             }
             document.getElementById("totalPrice").innerText = totalPrice.toString();
+        }
+
+        function showUpdateButton(evt) {
+            let keyname = evt.target.id.replace('basket-input-','');
+            document.getElementById("link-update-basket-" + keyname).style.visibility = "visible";
+        }
+
+        function reloadQuantity(event){
+            let keyname = event.id.replace('link-update-basket-','');
+            let quantity = document.getElementById("basket-input-" + keyname).value;
+
+            window.location.href = ("/basket/update?keyname=" + keyname + "&quantity=" + quantity);
         }
     </script>
 </head>
@@ -44,12 +57,12 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><spring:message code="quantity" /> : </span>
                             </div>
-                            <input type="number" class="form-control quantity-value" min="1" value="<c:out value="${ item.value }" />" />
+                            <input id="basket-input-${ item.key.product.keyname }" type="number" class="form-control quantity-value" min="1" value="<c:out value="${ item.value }" />" />
                         </div>
                     </p>
                     <p>
                         <div>
-                            <a class="font-apple link-update-basket" href="<c:url value="/basket/update?keyname=${ item.key.product.keyname }" />"><spring:message code="update" /></a>
+                            <a id="link-update-basket-${ item.key.product.keyname }" class="font-apple link-update-basket" onclick="reloadQuantity(this)" href="#"><spring:message code="update" /></a>
                             <a class="font-apple link-delete-basket" href="<c:url value="/basket/delete?keyname=${ item.key.product.keyname }" />"><spring:message code="delete" /></a>
                         </div>
                     </p>
