@@ -57,4 +57,11 @@ public class BasketController {
 
         return "redirect:/basket";
     }
+
+    @RequestMapping(value="/deleteAll", method = RequestMethod.GET)
+    public String deleteAllProduct(@ModelAttribute(value=Constant.BASKET) HashMap<String, Integer> basket){
+        basket.clear();
+
+        return "redirect:/home";
+    }
 }

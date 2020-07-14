@@ -5,6 +5,11 @@
 </head>
 <body>
     <div class="main-container">
+        <h2 class="h2-subtitle"><spring:message code="payment" /></h2>
+
+        <p>
+            <spring:message code="payPaypal" /> :
+        </p>
         <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 
             <input type="hidden" name="business" value="sb-cpsky2499271@business.example.com">
@@ -21,7 +26,7 @@
 
             <input type="hidden" name="item_name" value="Green garden product(s)">
 
-            <input type="hidden" name="return" value="http://localhost:8082/home">
+            <input type="hidden" name="return" value="http://localhost:8082/basket/deleteAll">
 
             <input type="image" name="submit"
                    src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
