@@ -1,26 +1,50 @@
 package com.spring.henallux.springproject.dataAccess.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name="command_line")
-@IdClass(CommandLineEntity.class)
-public class CommandLineEntity implements Serializable {
+@IdClass(CommandLineEntityId.class)
+public class CommandLineEntity {
 
     public CommandLineEntity(){
 
     }
 
     @Id
-    @JoinColumn(name="product_id", referencedColumnName = "id")
+    @Column(name="product_id")
+    private Integer productId;
+
+    @Id
+    @Column(name="command_id")
+    private Integer commandId;
+
+    @JoinColumn(name="product_id", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne
     private ProductEntity product;
 
-    @Id
-    @JoinColumn(name="command_id", referencedColumnName = "id")
+    @JoinColumn(name="command_id", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne
     private CommandEntity command;
+
+    @Column(name="quantity")
+    private int quantity;
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+
+    public Integer getCommandId() {
+        return commandId;
+    }
+
+    public void setCommandId(Integer commandId) {
+        this.commandId = commandId;
+    }
 
     public ProductEntity getProduct() {
         return product;
@@ -36,5 +60,13 @@ public class CommandLineEntity implements Serializable {
 
     public void setCommand(CommandEntity command) {
         this.command = command;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

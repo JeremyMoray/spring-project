@@ -20,7 +20,7 @@ public class CommandEntity {
     private Date date;
 
     @JoinColumn(name="user_id", referencedColumnName = "username")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private UserEntity user;
 
     @OneToMany(mappedBy = "command", fetch = FetchType.EAGER)

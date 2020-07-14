@@ -73,7 +73,7 @@
         </c:forEach>
         <p class="basket-total-price"><span style="color: black;"><spring:message code="totalPrice" /> : </span><span id="totalPrice"><c:out value="${ totalPrice }" /></span> €</p>
         <p class="text-center">
-            <button type="button" class="button-order-basket font-apple" onclick="window.location.href='<c:url value="/order/payment" />'"><spring:message code="order" /></button>
+            <button type="button" class="button-order-basket font-apple" onclick="window.location.href='<c:url value="/order/confirmation" />'"><spring:message code="order" /></button>
         </p>
     </div>
 </body>

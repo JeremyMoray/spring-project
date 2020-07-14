@@ -5,10 +5,12 @@ import com.spring.henallux.springproject.dataAccess.entity.UserEntity;
 import com.spring.henallux.springproject.dataAccess.repository.CommandRepository;
 import com.spring.henallux.springproject.dataAccess.util.ProviderConverter;
 import com.spring.henallux.springproject.model.Command;
+import com.spring.henallux.springproject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 
 @Service
 @Transactional
@@ -26,6 +28,12 @@ public class CommandDAO implements CommandDataAccess {
     public Command save(Command command){
         CommandEntity commandEntity = providerConverter.commandModelToCommandEntity(command);
         commandEntity = commandRepository.save(commandEntity);
+        return providerConverter.commandEntityToCommandModel(commandEntity);
+    }
+
+    public Command findByDateAndUser(Date date, User user){
+        UserEntity userEntity = providerConverter.userModelToUserEntity(user);
+        CommandEntity commandEntity = commandRepository.findByDateAndUser(date, userEntity);
         return providerConverter.commandEntityToCommandModel(commandEntity);
     }
 }
