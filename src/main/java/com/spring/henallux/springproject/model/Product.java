@@ -1,5 +1,7 @@
 package com.spring.henallux.springproject.model;
 
+import java.util.List;
+
 public class Product {
 
     private Integer id;
@@ -11,6 +13,8 @@ public class Product {
     private String imageURL;
 
     private Category category;
+
+    private List<CommandLine> commandLines;
 
     public Integer getId() {
         return id;
@@ -50,5 +54,13 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<CommandLine> getCommandLines() {
+        return commandLines;
+    }
+
+    public void setCommandLines(List<CommandLine> commandLines) {
+        this.commandLines = commandLines;
     }
 }

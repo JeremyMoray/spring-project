@@ -1,6 +1,9 @@
 package com.spring.henallux.springproject.dataAccess.entity;
 
+import com.spring.henallux.springproject.model.CommandLine;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="product")
@@ -26,6 +29,9 @@ public class ProductEntity {
     @JoinColumn(name="category_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)
     private CategoryEntity category;
+
+    @OneToMany(mappedBy = "product")
+    private List<CommandLineEntity> commandLines;
 
     public Integer getId() {
         return id;
@@ -65,5 +71,13 @@ public class ProductEntity {
 
     public void setCategory(CategoryEntity category) {
         this.category = category;
+    }
+
+    public List<CommandLineEntity> getCommandLines() {
+        return commandLines;
+    }
+
+    public void setCommandLines(List<CommandLineEntity> commandLines) {
+        this.commandLines = commandLines;
     }
 }

@@ -1,8 +1,10 @@
 package com.spring.henallux.springproject.dataAccess.util;
 
+import com.spring.henallux.springproject.dataAccess.entity.CommandEntity;
 import com.spring.henallux.springproject.dataAccess.entity.TranslationCategoryEntity;
 import com.spring.henallux.springproject.dataAccess.entity.TranslationProductEntity;
 import com.spring.henallux.springproject.dataAccess.entity.UserEntity;
+import com.spring.henallux.springproject.model.Command;
 import com.spring.henallux.springproject.model.TranslationCategory;
 import com.spring.henallux.springproject.model.TranslationProduct;
 import com.spring.henallux.springproject.model.User;
@@ -62,5 +64,13 @@ public class ProviderConverter {
 
     public TranslationProduct productEntityToProductModel(TranslationProductEntity productEntity){
         return mapper.map(productEntity, TranslationProduct.class);
+    }
+
+    public CommandEntity commandModelToCommandEntity(Command command){
+        return mapper.map(command, CommandEntity.class);
+    }
+
+    public Command commandEntityToCommandModel(CommandEntity commandEntity){
+        return mapper.map(commandEntity, Command.class);
     }
 }

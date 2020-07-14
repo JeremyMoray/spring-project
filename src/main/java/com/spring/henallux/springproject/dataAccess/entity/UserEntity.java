@@ -1,10 +1,8 @@
 package com.spring.henallux.springproject.dataAccess.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="user")
@@ -59,6 +57,9 @@ public class UserEntity {
 
     @Column(name="delivery_address")
     private String deliveryAddress;
+
+    @OneToMany(mappedBy = "user")
+    private List<CommandEntity> commands;
 
     public String getUsername() {
         return username;
@@ -178,6 +179,14 @@ public class UserEntity {
 
     public void setDeliveryAddress(String deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
+    }
+
+    public List<CommandEntity> getCommands() {
+        return commands;
+    }
+
+    public void setCommands(List<CommandEntity> commands) {
+        this.commands = commands;
     }
 }
 

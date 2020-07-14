@@ -48,6 +48,8 @@ public class User implements UserDetails {
 
     private String deliveryAddress;
 
+    private List<Command> commands;
+
     public User(String username, String password, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
         this.username = username;
         this.password = password;
@@ -217,5 +219,13 @@ public class User implements UserDetails {
 
     public void setDeliveryAddress(String deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
+    }
+
+    public List<Command> getCommands() {
+        return commands;
+    }
+
+    public void setCommands(List<Command> commands) {
+        this.commands = commands;
     }
 }
