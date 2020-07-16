@@ -19,14 +19,14 @@
             </div>
         </div>
         <div class="row details-container">
-            <div class="col-5">
+            <div class="col-4">
                 <img class="img-details" src='<c:url value="${ translationProduct.product.imageURL }" />' />
             </div>
             <div class="col-5">
                 <h2 class="h2-subtitle">${ translationProduct.name } - ${ translationProduct.product.unitPrice } €</h2>
                 <p>${ translationProduct.description }</p>
             </div>
-            <div class="col-2">
+            <div class="col-3">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1"><spring:message code="quantity" /> : </span>
