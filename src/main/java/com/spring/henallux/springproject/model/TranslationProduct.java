@@ -1,8 +1,10 @@
 package com.spring.henallux.springproject.model;
 
-import java.io.Serializable;
+public class TranslationProduct {
 
-public class TranslationProduct implements Serializable {
+    private Integer productId;
+
+    private Integer languageId;
 
     private String name;
 
@@ -11,6 +13,22 @@ public class TranslationProduct implements Serializable {
     private Product product;
 
     private Language language;
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+
+    public Integer getLanguageId() {
+        return languageId;
+    }
+
+    public void setLanguageId(Integer languageId) {
+        this.languageId = languageId;
+    }
 
     public String getName() {
         return name;

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 
 @Repository
-public interface CommandRepository  extends JpaRepository<CommandEntity, Integer> {
+public interface CommandRepository extends JpaRepository<CommandEntity, Integer> {
 
     CommandEntity findByDateAndUser(Date date, UserEntity user);
 }

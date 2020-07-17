@@ -1,29 +1,50 @@
 package com.spring.henallux.springproject.dataAccess.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name="translation_category")
-@IdClass(TranslationCategoryEntity.class)
-public class TranslationCategoryEntity implements Serializable {
+@IdClass(TranslationCategoryEntityId.class)
+public class TranslationCategoryEntity {
 
     public TranslationCategoryEntity(){
 
     }
 
+    @Id
+    @Column(name="category_id")
+    private Integer categoryId;
+
+    @Id
+    @Column(name="language_id")
+    private Integer languageId;
+
     @Column(name="name")
     private String name;
 
-    @Id
-    @JoinColumn(name="category_id", referencedColumnName = "id")
+    @JoinColumn(name="category_id", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne
     private CategoryEntity category;
 
-    @Id
-    @JoinColumn(name="language_id", referencedColumnName = "id")
+    @JoinColumn(name="language_id", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne
     private LanguageEntity language;
+
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public Integer getLanguageId() {
+        return languageId;
+    }
+
+    public void setLanguageId(Integer languageId) {
+        this.languageId = languageId;
+    }
 
     public String getName() {
         return name;

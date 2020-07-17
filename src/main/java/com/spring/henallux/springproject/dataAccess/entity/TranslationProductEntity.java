@@ -1,12 +1,23 @@
 package com.spring.henallux.springproject.dataAccess.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name="translation_product")
-@IdClass(TranslationProductEntity.class)
-public class TranslationProductEntity implements Serializable {
+@IdClass(TranslationProductEntityId.class)
+public class TranslationProductEntity {
+
+    public TranslationProductEntity(){
+
+    }
+
+    @Id
+    @Column(name="product_id")
+    private Integer productId;
+
+    @Id
+    @Column(name="language_id")
+    private Integer languageId;
 
     @Column(name="name")
     private String name;
@@ -14,15 +25,29 @@ public class TranslationProductEntity implements Serializable {
     @Column(name="description")
     private String description;
 
-    @Id
-    @JoinColumn(name="product_id", referencedColumnName = "id")
+    @JoinColumn(name="product_id", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne
     private ProductEntity product;
 
-    @Id
-    @JoinColumn(name="language_id", referencedColumnName = "id")
+    @JoinColumn(name="language_id", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne
     private LanguageEntity language;
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+
+    public Integer getLanguageId() {
+        return languageId;
+    }
+
+    public void setLanguageId(Integer languageId) {
+        this.languageId = languageId;
+    }
 
     public String getName() {
         return name;

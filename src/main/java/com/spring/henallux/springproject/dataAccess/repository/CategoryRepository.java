@@ -1,6 +1,7 @@
 package com.spring.henallux.springproject.dataAccess.repository;
 
 import com.spring.henallux.springproject.dataAccess.entity.TranslationCategoryEntity;
+import com.spring.henallux.springproject.dataAccess.entity.TranslationCategoryEntityId;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<TranslationCategoryEntity, Integer> {
+public interface CategoryRepository extends JpaRepository<TranslationCategoryEntity, TranslationCategoryEntityId> {
 
     @Query("select translationCategory " +
             "from CategoryEntity category, TranslationCategoryEntity translationCategory, LanguageEntity language " +

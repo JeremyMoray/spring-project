@@ -1,14 +1,32 @@
 package com.spring.henallux.springproject.model;
 
-import java.io.Serializable;
+public class TranslationCategory {
 
-public class TranslationCategory implements Serializable {
+    private Integer categoryId;
+
+    private Integer languageId;
 
     private String name;
 
     private Category category;
 
     private Language language;
+
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public Integer getLanguageId() {
+        return languageId;
+    }
+
+    public void setLanguageId(Integer languageId) {
+        this.languageId = languageId;
+    }
 
     public String getName() {
         return name;

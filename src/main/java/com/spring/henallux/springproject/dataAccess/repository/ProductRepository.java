@@ -1,6 +1,7 @@
 package com.spring.henallux.springproject.dataAccess.repository;
 
 import com.spring.henallux.springproject.dataAccess.entity.TranslationProductEntity;
+import com.spring.henallux.springproject.dataAccess.entity.TranslationProductEntityId;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductRepository  extends JpaRepository<TranslationProductEntity, Integer> {
+public interface ProductRepository  extends JpaRepository<TranslationProductEntity, TranslationProductEntityId> {
 
     @Query("select translationProduct " +
             "from ProductEntity product, TranslationProductEntity translationProduct, LanguageEntity language, CategoryEntity category " +
