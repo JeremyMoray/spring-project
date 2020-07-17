@@ -21,6 +21,12 @@ public class BasketController {
     private ProductDataAccess productDataAccess;
     private final MessageSource messageSource;
 
+    @ModelAttribute(Constant.BASKET)
+    public HashMap<String, Integer> basket(){
+        HashMap<String, Integer> basket = new HashMap<>();
+        return basket;
+    }
+
     @Autowired
     public BasketController(ProductDAO productDataAccess, MessageSource messageSource){
         this.messageSource = messageSource;

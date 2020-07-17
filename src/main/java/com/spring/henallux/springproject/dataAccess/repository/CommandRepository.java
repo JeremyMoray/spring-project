@@ -10,5 +10,5 @@ import java.util.Date;
 @Repository
 public interface CommandRepository  extends JpaRepository<CommandEntity, Integer> {
 
-    public CommandEntity findByDateAndUser(Date date, UserEntity user);
+    CommandEntity findByDateAndUser(Date date, UserEntity user);
 }

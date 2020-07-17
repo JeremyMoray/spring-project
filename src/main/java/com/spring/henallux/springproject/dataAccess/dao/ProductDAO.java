@@ -1,11 +1,8 @@
 package com.spring.henallux.springproject.dataAccess.dao;
 
-import com.spring.henallux.springproject.dataAccess.entity.TranslationCategoryEntity;
 import com.spring.henallux.springproject.dataAccess.entity.TranslationProductEntity;
-import com.spring.henallux.springproject.dataAccess.repository.CategoryRepository;
 import com.spring.henallux.springproject.dataAccess.repository.ProductRepository;
 import com.spring.henallux.springproject.dataAccess.util.ProviderConverter;
-import com.spring.henallux.springproject.model.TranslationCategory;
 import com.spring.henallux.springproject.model.TranslationProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

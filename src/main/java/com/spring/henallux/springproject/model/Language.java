@@ -1,7 +1,5 @@
 package com.spring.henallux.springproject.model;
 
-import com.spring.henallux.springproject.dataAccess.entity.TranslationProductEntity;
-
 import java.util.List;
 
 public class Language{

@@ -4,5 +4,5 @@ import com.spring.henallux.springproject.model.CommandLine;
 
 public interface CommandLineDataAccess {
 
-    public CommandLine save(CommandLine commandLine);
+    CommandLine save(CommandLine commandLine);
 }

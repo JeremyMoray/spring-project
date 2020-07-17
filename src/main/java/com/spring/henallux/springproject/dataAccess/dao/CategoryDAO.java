@@ -32,4 +32,9 @@ public class CategoryDAO implements CategoryDataAccess{
         }
         return translationCategories;
     }
+
+    public TranslationCategory findByKeynameByLocale(String keyname, String locale){
+        TranslationCategoryEntity translationCategoryEntity = categoryRepository.findByKeynameByLocale(keyname, locale);
+        return providerConverter.categoryEntityToCategoryModel(translationCategoryEntity);
+    }
 }

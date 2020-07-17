@@ -50,6 +50,7 @@ public class CatalogController {
     public String home(Model model, @PathVariable("category") String category){
         model.addAttribute("currentPage", "catalog");
         model.addAttribute("title", messageSource.getMessage("catalog", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("categoryName", categoryDataAccess.findByKeynameByLocale(category, LocaleContextHolder.getLocale().toString()).getName());
         model.addAttribute("translationProducts", productDataAccess.findAllByLocaleByCategory(LocaleContextHolder.getLocale().toString(), category));
         return "integrated:products";
     }
@@ -59,13 +60,13 @@ public class CatalogController {
         TranslationProduct chosenProduct = productDataAccess.findProductByLocale(LocaleContextHolder.getLocale().toString(), product);
         model.addAttribute("currentPage", "catalog");
         model.addAttribute("title", chosenProduct.getName());
+        model.addAttribute("category", categoryDataAccess.findByKeynameByLocale(category, LocaleContextHolder.getLocale().toString()));
         model.addAttribute("translationProduct", chosenProduct);
         return "integrated:details";
     }
 
     @RequestMapping(value = "/{category}/{product}/add/{quantity}", method = RequestMethod.GET)
-    public String home(Model model,
-                       @PathVariable("category") String category,
+    public String home(@PathVariable("category") String category,
                        @PathVariable("product") String product,
                        @PathVariable("quantity") Integer quantity,
                        HttpSession session
@@ -79,6 +80,6 @@ public class CatalogController {
         }
         session.setAttribute(Constant.BASKET, basket);
 
-        return "redirect:/catalog/" + category + "/" + product;
+        return "redirect:/catalog/" + category;
     }
 }

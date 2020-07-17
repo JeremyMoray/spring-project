@@ -13,9 +13,12 @@
 </head>
 <body>
     <div class="main-container">
-        <div class="row text-right">
+        <div class="row">
             <div class="col">
-                <button type="button" class="button-back font-apple" onclick="window.location.href='<c:url value="/catalog" />'">< <spring:message code="catalog" /></button>
+                <h2 class="h2-subtitle">${ category.name }</h2>
+            </div>
+            <div class="col">
+                <button type="button" class="button-back font-apple" onclick="window.location.href='<c:url value="/catalog/${ category.category.keyname }" />'">< ${ category.name }</button>
             </div>
         </div>
         <div class="row details-container">

@@ -19,7 +19,7 @@
     </header>
 
     <c:set var="basketSize" value="${fn:length(basket)}"/>
-    <div class="topnav">
+    <div id="topnav">
         <a class="<c:if test="${currentPage == 'home'}">active</c:if> first-menu" href="<c:url value="/home" />">
             <spring:message code="home" />
         </a>

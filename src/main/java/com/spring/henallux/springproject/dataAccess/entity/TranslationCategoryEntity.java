@@ -1,7 +1,5 @@
 package com.spring.henallux.springproject.dataAccess.entity;
 
-import com.spring.henallux.springproject.model.TranslationCategory;
-
 import javax.persistence.*;
 import java.io.Serializable;
 

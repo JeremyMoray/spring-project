@@ -5,5 +5,6 @@ import com.spring.henallux.springproject.model.TranslationCategory;
 import java.util.List;
 
 public interface CategoryDataAccess {
-    public List<TranslationCategory> findAllByLocale(String locale);
+    List<TranslationCategory> findAllByLocale(String locale);
+    TranslationCategory findByKeynameByLocale(String keyname, String locale);
 }

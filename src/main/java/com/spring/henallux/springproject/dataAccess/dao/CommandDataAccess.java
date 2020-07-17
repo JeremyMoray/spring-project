@@ -7,6 +7,6 @@ import java.util.Date;
 
 public interface CommandDataAccess {
 
-    public Command save(Command command);
-    public Command findByDateAndUser(Date date, User user);
+    Command save(Command command);
+    Command findByDateAndUser(Date date, User user);
 }

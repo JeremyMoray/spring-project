@@ -16,5 +16,14 @@ public interface CategoryRepository extends JpaRepository<TranslationCategoryEnt
             "and translationCategory.language = language " +
             "and language.locale = ?1"
     )
-    public List<TranslationCategoryEntity> findAllByLocale(String locale);
+    List<TranslationCategoryEntity> findAllByLocale(String locale);
+
+    @Query("select translationCategory " +
+            "from CategoryEntity category, TranslationCategoryEntity translationCategory, LanguageEntity language " +
+            "where category = translationCategory.category " +
+            "and translationCategory.language = language " +
+            "and category.keyname = ?1 " +
+            "and language.locale = ?2"
+    )
+    TranslationCategoryEntity findByKeynameByLocale(String keyname, String locale);
 }
