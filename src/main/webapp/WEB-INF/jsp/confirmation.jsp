@@ -2,6 +2,13 @@
 <%@ include file="include/importTags.jsp"%>
 <html>
 <head>
+    <script>
+        function init(){
+            let totalPrice = document.getElementById('totalPrice');
+            totalPrice.innerText = (Math.round(parseFloat(totalPrice.innerText) * 100) / 100).toFixed(2);
+        }
+        window.onload = init;
+    </script>
 </head>
 <body>
     <div class="main-container">
@@ -36,7 +43,7 @@
             </c:forEach>
             <hr>
             <p class="text-right">
-                <spring:message code="totalPrice" /> : <c:out value="${ totalPrice }" /> €
+                <spring:message code="totalPrice" /> : <span id="totalPrice"><c:out value="${ totalPrice }" /></span> €
             </p>
             <p class="text-center">
                 <button type="button" class="button-confirm-basket font-apple" onclick="window.location.href='<c:url value="/order/validation" />'"><spring:message code="confirm" /></button>

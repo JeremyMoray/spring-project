@@ -11,8 +11,30 @@
                     updateTotalPrice();
                 });
             }
+            addValidations();
+
+            let totalPrice = document.getElementById('totalPrice');
+            totalPrice.innerText = (Math.round(parseFloat(totalPrice.innerText) * 100) / 100).toFixed(2);
         }
         window.onload = init;
+
+        function addValidations(){
+            let quantities = document.getElementsByClassName('quantity-value');
+
+            for(quantity of quantities){
+                quantity.onkeydown = function(e) {
+                    if(!((e.key >= 1 && e.key <= 9) || e.key === 'Backspace')) {
+                        return false;
+                    }
+                }
+
+                quantity.onblur = function (e) {
+                    if(quantity.value === ''){
+                        quantity.value = 1;
+                    }
+                }
+            }
+        }
 
         function updateTotalPrice(){
             let infoColumns = document.getElementsByClassName("product-infos-basket");
@@ -20,6 +42,7 @@
             for(infoColumn of infoColumns){
                 totalPrice += parseFloat(infoColumn.getElementsByClassName("price-value")[0].innerHTML) * parseFloat(infoColumn.getElementsByClassName("quantity-value")[0].value);
             }
+            totalPrice = (Math.round(totalPrice * 100) / 100).toFixed(2);
             document.getElementById("totalPrice").innerText = totalPrice.toString();
         }
 
@@ -57,7 +80,7 @@
                         <p>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><spring:message code="quantity" /> : </span>
+                                    <span class="input-group-text"><spring:message code="quantity" /> : </span>
                                 </div>
                                 <input id="basket-input-${ item.key.product.keyname }" type="number" class="form-control quantity-value" min="1" value="<c:out value="${ item.value }" />" />
                             </div>

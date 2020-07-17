@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -24,6 +25,12 @@ public class OrderController {
     private CommandLineDataAccess commandLineDataAccess;
     private final MessageSource messageSource;
 
+    @ModelAttribute(Constant.BASKET)
+    public HashMap<String, Integer> basket(){
+        HashMap<String, Integer> basket = new HashMap<>();
+        return basket;
+    }
+
     @Autowired
     public OrderController(ProductDAO productDataAccess, CommandDAO commandDataAccess, CommandLineDAO commandLineDataAccess, MessageSource messageSource){
         this.messageSource = messageSource;
@@ -34,7 +41,6 @@ public class OrderController {
 
     @RequestMapping(value="/confirmation", method = RequestMethod.GET)
     public String confirmation(Model model, @ModelAttribute(value=Constant.BASKET) HashMap<String, Integer> basket){
-        model.addAttribute(basket);
         model.addAttribute("currentPage", null);
         model.addAttribute("title", messageSource.getMessage("confirmation", null, LocaleContextHolder.getLocale()));
 
@@ -84,7 +90,6 @@ public class OrderController {
 
     @RequestMapping(value="/payment", method = RequestMethod.GET)
     public String pay(Model model, @ModelAttribute(value=Constant.BASKET) HashMap<String, Integer> basket){
-        model.addAttribute(basket);
         model.addAttribute("currentPage", null);
         model.addAttribute("title", messageSource.getMessage("order", null, LocaleContextHolder.getLocale()));
 
