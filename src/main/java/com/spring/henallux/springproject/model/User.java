@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -15,10 +15,12 @@ import java.util.List;
 
 public class User implements UserDetails {
 
-    @NotEmpty
+    @NotBlank(message = "{username.notBlank}")
+    @Size(min=4, max=30, message = "{username.invalidSize}")
     private String username;
 
-    @NotEmpty
+    @NotBlank(message = "{password.notBlank}")
+    @Size(min=6, max=30, message = "{password.invalidLenght}")
     private String password;
 
     private String authorities;
@@ -31,21 +33,33 @@ public class User implements UserDetails {
 
     private Boolean enabled;
 
+    @Size(min=1, max=30, message = "{firstname.invalidLenght}")
     private String firstname;
 
+    @Size(min=1, max=30, message = "{name.invalidLenght}")
     private String name;
 
+    @NotBlank(message = "{email.notBlank}")
+    @Email(message = "{email.invalidEmailFormat}")
     private String email;
 
+    @Size(min=1, max=15, message = "{phoneNumber.invalidLenght}")
     private String phoneNumber;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date birthdate;
 
+    @NotNull(message = "{postalCode.notNull}")
+    @Min(value=1000, message = "{postalCode.invalidMin}")
+    @Max(value=9999, message = "{postalCode.invalidMax}")
     private Integer postalCode;
 
+    @NotBlank(message = "{city.notBlank}")
+    @Size(min=1, max=60, message = "{city.invalidLenght}")
     private String city;
 
+    @NotBlank(message = "{deliveryAddress.notBlank}")
+    @Size(min=1, max=60, message = "{deliveryAddress.invalidLenght}")
     private String deliveryAddress;
 
     private List<Command> commands;

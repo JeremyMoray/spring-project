@@ -15,6 +15,8 @@ public class ProviderConverter {
     }
 
     public User userEntityToUserModel(UserEntity userEntity){
+        if(userEntity == null)
+            return null;
         return mapper.map(userEntity, User.class);
     }
 

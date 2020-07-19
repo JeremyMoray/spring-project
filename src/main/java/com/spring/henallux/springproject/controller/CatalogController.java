@@ -71,15 +71,18 @@ public class CatalogController {
                        @PathVariable("quantity") Integer quantity,
                        HttpSession session
     ){
-        HashMap<String, Integer> basket = (HashMap<String, Integer>) session.getAttribute(Constant.BASKET);
-        if(basket.containsKey(product)){
-            basket.put(product, basket.get(product) + quantity);
-        }
-        else{
-            basket.put(product, quantity);
-        }
-        session.setAttribute(Constant.BASKET, basket);
+        if(quantity > 0){
+            HashMap<String, Integer> basket = (HashMap<String, Integer>) session.getAttribute(Constant.BASKET);
+            if(basket.containsKey(product)){
+                basket.put(product, basket.get(product) + quantity);
+            }
+            else{
+                basket.put(product, quantity);
+            }
+            session.setAttribute(Constant.BASKET, basket);
 
-        return "redirect:/catalog/" + category;
+            return "redirect:/catalog/" + category;
+        }
+        return "integrated:error";
     }
 }

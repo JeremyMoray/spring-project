@@ -26,6 +26,14 @@
                             <form:errors path="password" />
                         </div>
 
+                        <c:if test="${ param.error != null }">
+                            <div>
+                                <p>
+                                    <small class="text-error"><spring:message code="invalidUserPassword" /></small>
+                                </p>
+                            </div>
+                        </c:if>
+
                         <div>
                             <form:button class="button-form-login font-apple"><spring:message code="logIn" /></form:button>
                             <button type="button" class="button-form-login button-form-register font-apple" onclick="window.location.href='<c:url value="/register" />'"><spring:message code="register" /></button>

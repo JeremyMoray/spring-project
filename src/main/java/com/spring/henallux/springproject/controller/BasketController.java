@@ -52,9 +52,12 @@ public class BasketController {
 
     @RequestMapping(value="/update", method = RequestMethod.GET)
     public String updateProduct(@ModelAttribute(value=Constant.BASKET) HashMap<String, Integer> basket, @RequestParam String keyname, @RequestParam Integer quantity){
-        basket.put(keyname, quantity);
+        if(quantity > 0){
+            basket.put(keyname, quantity);
 
-        return "redirect:/basket";
+            return "redirect:/basket";
+        }
+        return "error:integrated";
     }
 
     @RequestMapping(value="/delete", method = RequestMethod.GET)
