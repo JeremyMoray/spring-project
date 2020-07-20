@@ -11,7 +11,6 @@
             confirmPasswordInput.onkeyup = validatePassword;
 
             function validatePassword() {
-                console.log("hello");
                 <spring:message code="passwordNotMatch" var="passwordPlaceholder"/>
                 if(passwordInput.value !== confirmPasswordInput.value) {
                     confirmPasswordInput.setCustomValidity("${ passwordPlaceholder }");

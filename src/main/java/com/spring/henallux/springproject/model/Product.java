@@ -12,6 +12,8 @@ public class Product {
 
     private String imageURL;
 
+    private Double discountPercentage;
+
     private Category category;
 
     private List<CommandLine> commandLines;
@@ -46,6 +48,14 @@ public class Product {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public Double getDiscountPercentage() {
+        return discountPercentage;
+    }
+
+    public void setDiscountPercentage(Double discountPercentage) {
+        this.discountPercentage = discountPercentage;
     }
 
     public Category getCategory() {

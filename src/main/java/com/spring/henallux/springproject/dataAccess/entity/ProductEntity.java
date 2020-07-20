@@ -24,6 +24,9 @@ public class ProductEntity {
     @Column(name="image_url")
     private String imageURL;
 
+    @Column(name="discount_percentage")
+    private Double discountPercentage;
+
     @JoinColumn(name="category_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)
     private CategoryEntity category;
@@ -61,6 +64,14 @@ public class ProductEntity {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public Double getDiscountPercentage() {
+        return discountPercentage;
+    }
+
+    public void setDiscountPercentage(Double discountPercentage) {
+        this.discountPercentage = discountPercentage;
     }
 
     public CategoryEntity getCategory() {

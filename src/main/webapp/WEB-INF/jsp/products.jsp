@@ -22,7 +22,12 @@
             <div class="col-md-4">
                 <img class="img-product" src='<c:url value="${ translationProduct.product.imageURL }" />' onclick="window.location.href='<c:url value="/catalog/${ translationProduct.product.category.keyname }/${ translationProduct.product.keyname }" />'"/>
                 <button class="button-product font-apple" onclick="window.location.href='<c:url value="/catalog/${ translationProduct.product.category.keyname }/${ translationProduct.product.keyname }" />'">
-                    <c:out value="${ translationProduct.name } - ${ translationProduct.product.unitPrice } €" />
+                    <c:if test="${ translationProduct.product.unitPrice != realPrices.get(status.count - 1) }">
+                        ${ translationProduct.name } - ${ realPrices.get(status.count - 1) } € <small class="text-danger font-weight-bold"><s>${ translationProduct.product.unitPrice } €</s></small>
+                    </c:if>
+                    <c:if test="${ translationProduct.product.unitPrice == realPrices.get(status.count - 1) }">
+                        <c:out value="${ translationProduct.name } - ${ translationProduct.product.unitPrice } €" />
+                    </c:if>
                 </button>
             </div>
 

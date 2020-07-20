@@ -21,10 +21,14 @@ public class ProviderConverter {
     }
 
     public TranslationCategory categoryEntityToCategoryModel(TranslationCategoryEntity categoryEntity){
+        if(categoryEntity == null)
+            return null;
         return mapper.map(categoryEntity, TranslationCategory.class);
     }
 
     public TranslationProduct productEntityToProductModel(TranslationProductEntity productEntity){
+        if(productEntity == null)
+            return null;
         return mapper.map(productEntity, TranslationProduct.class);
     }
 

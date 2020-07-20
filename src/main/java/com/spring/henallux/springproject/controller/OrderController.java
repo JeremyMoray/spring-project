@@ -3,6 +3,7 @@ package com.spring.henallux.springproject.controller;
 import com.spring.henallux.springproject.dataAccess.dao.*;
 import com.spring.henallux.springproject.model.*;
 import com.spring.henallux.springproject.service.Constant;
+import com.spring.henallux.springproject.service.DiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -22,6 +23,7 @@ public class OrderController {
     private ProductDataAccess productDataAccess;
     private CommandDataAccess commandDataAccess;
     private CommandLineDataAccess commandLineDataAccess;
+    private DiscountService discountService;
     private final MessageSource messageSource;
 
     @ModelAttribute(Constant.BASKET)
@@ -31,11 +33,12 @@ public class OrderController {
     }
 
     @Autowired
-    public OrderController(ProductDAO productDataAccess, CommandDAO commandDataAccess, CommandLineDAO commandLineDataAccess, MessageSource messageSource){
+    public OrderController(ProductDAO productDataAccess, CommandDAO commandDataAccess, CommandLineDAO commandLineDataAccess, DiscountService discountService, MessageSource messageSource){
         this.messageSource = messageSource;
         this.productDataAccess = productDataAccess;
         this.commandDataAccess = commandDataAccess;
         this.commandLineDataAccess = commandLineDataAccess;
+        this.discountService = discountService;
     }
 
     @RequestMapping(value="/confirmation", method = RequestMethod.GET)
@@ -47,6 +50,7 @@ public class OrderController {
 
         for (HashMap.Entry<String, Integer> entry : basket.entrySet()) {
             TranslationProduct translationProduct = productDataAccess.findProductByLocale(LocaleContextHolder.getLocale().toString(), entry.getKey());
+            translationProduct.getProduct().setUnitPrice(discountService.calculateRealPrice(translationProduct.getProduct().getUnitPrice(), translationProduct.getProduct().getDiscountPercentage()));
             translationProducts.put(translationProduct, entry.getValue());
         }
 
@@ -97,7 +101,7 @@ public class OrderController {
 
         for (HashMap.Entry<String, Integer> entry : basket.entrySet()) {
             TranslationProduct translationProduct = productDataAccess.findProductByLocale(LocaleContextHolder.getLocale().toString(), entry.getKey());
-            totalPrice += translationProduct.getProduct().getUnitPrice() * entry.getValue();
+            totalPrice += discountService.calculateRealPrice(translationProduct.getProduct().getUnitPrice(), translationProduct.getProduct().getDiscountPercentage()) * entry.getValue();
             translationProducts.put(translationProduct, entry.getValue());
         }
 

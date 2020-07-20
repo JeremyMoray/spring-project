@@ -20,7 +20,7 @@ public class AboutController {
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public String home(Model model){
+    public String about(Model model){
         model.addAttribute("currentPage", "about");
         model.addAttribute("title", messageSource.getMessage("about", null, LocaleContextHolder.getLocale()));
         return "integrated:about";

@@ -2,13 +2,7 @@
 <%@ include file="include/importTags.jsp"%>
 <html>
 <head>
-    <script>
-        function init(){
-            let totalPrice = document.getElementById('totalPrice');
-            totalPrice.innerText = (Math.round(parseFloat(totalPrice.innerText) * 100) / 100).toFixed(2);
-        }
-        window.onload = init;
-    </script>
+    <script type="text/javascript" src="<spring:url value='/js/confirmation.js' />"></script>
 </head>
 <body>
     <div class="main-container">

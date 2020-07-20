@@ -23,7 +23,7 @@ public class LoginController {
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public String home(Model model){
+    public String login(Model model){
         UserDetails user = new User();
         model.addAttribute("userForm", user);
         model.addAttribute("currentPage", "login");

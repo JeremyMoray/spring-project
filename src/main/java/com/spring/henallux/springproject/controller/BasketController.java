@@ -4,6 +4,7 @@ import com.spring.henallux.springproject.dataAccess.dao.ProductDAO;
 import com.spring.henallux.springproject.dataAccess.dao.ProductDataAccess;
 import com.spring.henallux.springproject.model.TranslationProduct;
 import com.spring.henallux.springproject.service.Constant;
+import com.spring.henallux.springproject.service.DiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -19,6 +20,7 @@ import java.util.HashMap;
 public class BasketController {
 
     private ProductDataAccess productDataAccess;
+    private DiscountService discountService;
     private final MessageSource messageSource;
 
     @ModelAttribute(Constant.BASKET)
@@ -28,13 +30,14 @@ public class BasketController {
     }
 
     @Autowired
-    public BasketController(ProductDAO productDataAccess, MessageSource messageSource){
+    public BasketController(ProductDAO productDataAccess, MessageSource messageSource, DiscountService discountService){
         this.messageSource = messageSource;
         this.productDataAccess = productDataAccess;
+        this.discountService = discountService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String home(Model model, @ModelAttribute(value=Constant.BASKET) HashMap<String, Integer> basket){
+    public String basket(Model model, @ModelAttribute(value=Constant.BASKET) HashMap<String, Integer> basket){
         model.addAttribute(basket);
         model.addAttribute("currentPage", "basket");
         model.addAttribute("title", messageSource.getMessage("basket", null, LocaleContextHolder.getLocale()));
@@ -42,7 +45,9 @@ public class BasketController {
         HashMap<TranslationProduct, Integer> translationProducts = new HashMap<>();
 
         for (HashMap.Entry<String, Integer> entry : basket.entrySet()) {
-            translationProducts.put(productDataAccess.findProductByLocale(LocaleContextHolder.getLocale().toString(), entry.getKey()), entry.getValue());
+            TranslationProduct translationProduct = productDataAccess.findProductByLocale(LocaleContextHolder.getLocale().toString(), entry.getKey());
+            translationProduct.getProduct().setUnitPrice(discountService.calculateRealPrice(translationProduct.getProduct().getUnitPrice(), translationProduct.getProduct().getDiscountPercentage()));
+            translationProducts.put(translationProduct, entry.getValue());
         }
 
         model.addAttribute("translationProducts", translationProducts);

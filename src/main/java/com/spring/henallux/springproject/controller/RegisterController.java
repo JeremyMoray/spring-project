@@ -41,7 +41,7 @@ public class RegisterController {
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public String home(Model model){
+    public String register(Model model){
         UserDetails user = new User();
         model.addAttribute("userForm", user);
         model.addAttribute("currentPage", "register");

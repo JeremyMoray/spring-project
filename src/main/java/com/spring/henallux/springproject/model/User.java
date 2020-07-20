@@ -40,7 +40,7 @@ public class User implements UserDetails {
     private String name;
 
     @NotBlank(message = "{email.notBlank}")
-    @Email(message = "{email.invalidEmailFormat}")
+    @Pattern(regexp = "[^@]+@[^\\.]+\\..+", message = "{email.invalidEmailFormat}")
     private String email;
 
     @Size(min=1, max=15, message = "{phoneNumber.invalidLenght}")
@@ -59,7 +59,7 @@ public class User implements UserDetails {
     private String city;
 
     @NotBlank(message = "{deliveryAddress.notBlank}")
-    @Size(min=1, max=60, message = "{deliveryAddress.invalidLenght}")
+    @Size(min=1, max=255, message = "{deliveryAddress.invalidLenght}")
     private String deliveryAddress;
 
     private List<Command> commands;
