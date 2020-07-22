@@ -31,9 +31,9 @@ public class CommandDAO implements CommandDataAccess {
         return providerConverter.commandEntityToCommandModel(commandEntity);
     }
 
-    public Command findByDateAndUser(Date date, User user){
+    public Command findByUser(User user){
         UserEntity userEntity = providerConverter.userModelToUserEntity(user);
-        CommandEntity commandEntity = commandRepository.findByDateAndUser(date, userEntity);
+        CommandEntity commandEntity = commandRepository.findByUser(userEntity);
         return providerConverter.commandEntityToCommandModel(commandEntity);
     }
 }

@@ -1,5 +1,7 @@
 package com.spring.henallux.springproject.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -7,6 +9,7 @@ public class Command {
 
     private int id;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date date;
 
     private User user;

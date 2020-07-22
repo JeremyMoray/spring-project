@@ -71,7 +71,7 @@ public class OrderController {
 
         commandDataAccess.save(command);
 
-        command = commandDataAccess.findByDateAndUser(date, user);
+        command = commandDataAccess.findByUser(user);
 
         for (HashMap.Entry<String, Integer> entry : basket.entrySet()) {
             CommandLine commandLine = new CommandLine();
