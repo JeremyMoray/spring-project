@@ -19,6 +19,14 @@
                     confirmPasswordInput.setCustomValidity('');
                 }
             }
+
+            let phoneNumber = document.getElementById('phone-number-input');
+
+            phoneNumber.onkeydown = function(e) {
+                if(!((e.key >= 1 && e.key <= 9) || e.key === 'Backspace')) {
+                    return false;
+                }
+            }
         }
         window.onload = init;
     </script>
@@ -90,7 +98,7 @@
                     <div class="form-group">
                         <spring:message code="phoneNumber" var="phoneNumberPlaceholder"/>
                         <form:label path="phoneNumber">${phoneNumberPlaceholder}</form:label>
-                        <form:input path="phoneNumber" type="text" class="form-control" aria-describedby="phoneNumberError" placeholder="${phoneNumberPlaceholder}"></form:input>
+                        <form:input id="phone-number-input" path="phoneNumber" type="text" class="form-control" aria-describedby="phoneNumberError" placeholder="${phoneNumberPlaceholder}"></form:input>
                         <small id="phoneNumberError" class="form-text text-muted"><form:errors path="phoneNumber" class="text-error"/></small>
                     </div>
 

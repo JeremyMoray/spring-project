@@ -44,6 +44,7 @@ public class User implements UserDetails {
     private String email;
 
     @Size(min=1, max=15, message = "{phoneNumber.invalidLenght}")
+    @Digits(integer = 15, fraction = 0, message = "{phoneNumber.wrongFormat}")
     private String phoneNumber;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
